@@ -11,15 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity(name = "Categoria")
+@Entity
 public class Categoria implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String titulo;
-	private String nome_autor;
-	private String texto;
+	private String nome;
+	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria")
 	private List<Livro> livros = new ArrayList<>();
@@ -28,14 +27,15 @@ public class Categoria implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
-	public Categoria(Integer id, String titulo, String nome_autor, String texto) {
+	public Categoria(Integer id, String nome, String descricao) {
 		super();
 		this.id = id;
-		this.titulo = titulo;
-		this.nome_autor = nome_autor;
-		this.texto = texto;
+		this.nome = nome;
+		this.descricao = descricao;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -45,28 +45,20 @@ public class Categoria implements Serializable{
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getNome_autor() {
-		return nome_autor;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome_autor(String nome_autor) {
-		this.nome_autor = nome_autor;
-	}
-
-	public String getTexto() {
-		return texto;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public List<Livro> getLivros() {
@@ -93,9 +85,7 @@ public class Categoria implements Serializable{
 		Categoria other = (Categoria) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
+
 	
 	
 }

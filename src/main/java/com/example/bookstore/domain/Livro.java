@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "Livro")
+@Entity(name = "livro")
 public class Livro implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -18,8 +18,10 @@ public class Livro implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	private String descricao;
+	private String titulo;
+	private String nome_autor;
+	private String texto;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
@@ -30,41 +32,74 @@ public class Livro implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Livro(Integer id, String nome, String descricao, Categoria categoria) {
+
+
+	public Livro(Integer id, String titulo, String nome_autor, String texto, Categoria categoria) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
+		this.titulo = titulo;
+		this.nome_autor = nome_autor;
+		this.texto = texto;
 		this.categoria = categoria;
 	}
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+
+
+	public String getTitulo() {
+		return titulo;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
-	public String getDescricao() {
-		return descricao;
+
+
+	public String getNome_autor() {
+		return nome_autor;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+
+	public void setNome_autor(String nome_autor) {
+		this.nome_autor = nome_autor;
 	}
+
+
+	public String getTexto() {
+		return texto;
+	}
+
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
+
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,7 +111,6 @@ public class Livro implements Serializable{
 		Livro other = (Livro) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	
 
 }
